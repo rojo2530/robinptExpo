@@ -1,21 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
+// import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import RootStore from './src/stores/root';
+import { AsyncStorage } from 'react-native';
+import { create } from 'mobx-persist';
+import { Provider } from 'mobx-react';
+import MainRouter from './src/navigation/mainRouter';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+export const rootStore: RootStore = new RootStore();
+
+const hydrate = create({  
+  storage: AsyncStorage,
+  jsonify: true,
+});
+
+export default class App extends React.Component {
+  state = {
+    hydrate: false,
+  }
+
+  componentDidMount() {
+    hydrate('shopsStore', rootStore.shopsStore).then(() => {
+      this.setState({ hydrate: true });
+    }).catch(error =>  {
+      console.log('There is was an error ', error);
+    });
+  }
+  
+  render() {
+    if (!this.state.hydrate) {
+      return null;
+    }
+
+    return (
+      <Provider rootStore={rootStore}>
+        <MainRouter />
+      </Provider>
+    );
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
