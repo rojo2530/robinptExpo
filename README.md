@@ -4,7 +4,7 @@
 
 
 * Node and Yarn
-* Expo
+* expo-cli
 * Android Emulator or Android device with expo-client
 * For IOS MAC with IOS emulator, or iPhone with expo-client
 
@@ -20,6 +20,7 @@ El listado de tienda está pagina, de forma que se van cargando de 10 en 10, seg
 
 ## Install 
 
+* yarn add --global expo-cli
 * Clone Repo with git clone https://github.com/rojo2530/robinptExpo.git
 * yarn install
 * yarn test (para pasar los test de la app)
