@@ -7,6 +7,11 @@ export enum TABS_ROUTE_NAME {
   FAVORITES = 'ShopsFavoriteList'
 }
 
+export enum TABS_NAME {
+  SHOPS = 'All',
+  FAVORITES = 'Favorites',
+}
+
 export const TAB_SHOPS_LIST = 'ShopsList';
 
 export const Colors = {      
