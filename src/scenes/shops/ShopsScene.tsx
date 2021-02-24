@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, Platform } from 'react-native';
 import ShopsStore from '../../stores/shop';
@@ -22,7 +22,8 @@ interface Props {
 }))
 @observer
 class ShopsScene extends React.Component<Props> {
-  _unsubscribe: any;
+  _unsubscribeFocus: any;
+  _unsubscribeBlur: any;
   callOnScrollEnd: boolean = false;
 
   state = {
@@ -30,19 +31,24 @@ class ShopsScene extends React.Component<Props> {
   }
   
   componentDidMount() {
-    this.props.shopsStore.getShops()
-    this._unsubscribe = this.props.navigation.addListener('focus', async () => {
+    this.props.shopsStore.getShops();
+    
+    this._unsubscribeFocus = this.props.navigation.addListener('focus', async () => {
       this.setState({ focus: true });
-    });   
+    });
+    this._unsubscribeBlur = this.props.navigation.addListener('blur', () => {
+      this.setState({ focus: false });
+     
+    });    
   }
 
    componentWillUnmount() {
-    this._unsubscribe();
+    this._unsubscribeFocus();
+    this._unsubscribeFocus();
   }
 
   renderFooter = () => {
     if (!this.props.shopsStore.isLoading) return null;
-    console.log('Se renderiza el footer');
     return (
       <View style={{paddingVertical: 50}}>
         <Spinner />
