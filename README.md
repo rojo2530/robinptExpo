@@ -16,7 +16,7 @@ marcado como favorita.
 También existe un botón "Reset" arriba del listado, que sirve para resetear los datos almacenados en el móvil (cuidado!, si pulsa en este botón se borrarán todas las tiendas
 favoritas).
 
-El listado de tienda está pagina, de forma que se van cargando de 10 en 10, según se va llegando al final de la lista. 
+El listado de las tiendas usa un scroll infinito, de forma que se van cargando de 10 en 10, según se va llegando al final de la lista. 
 
 ## Install 
 
