@@ -7,7 +7,7 @@ export const httpClient = axios.create({});
 
 const setBaseUrl = () => httpClient.defaults.baseURL = API_URL;
  
-const buildPathwithParams = (path: string, params: object = {}): string => {
+const buildPathwithParams = (path: string, params: any): string => {
   if (isEmpty(params)) {
     return path;
   }
