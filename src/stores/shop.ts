@@ -46,7 +46,7 @@ class ShopsStore {
     try {
       this.setIsLoading(true);
       const shops = await this.apiService.getShopsRequest(this.page + 1);
-      
+
       if (shops) {
         this.shops = this.shops.concat(shops.slice());
         //shops.map(shop => this.shops.push(shop));

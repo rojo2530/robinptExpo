@@ -1,5 +1,5 @@
 // import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import * as React from 'react';
 import RootStore from './src/stores/root';
 import { AsyncStorage } from 'react-native';
 import { create } from 'mobx-persist';
