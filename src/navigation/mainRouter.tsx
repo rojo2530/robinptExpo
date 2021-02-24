@@ -3,8 +3,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'react-native';
 import { Stack } from './navigators';
 import ShopsRouter from './shopsRouter';
-// import ShopDetailScene from '../scenes/shop/ShopDetailScene';
 import { CardStyleInterpolators } from '@react-navigation/stack';
+import { Colors } from '../utils/constants';
 
 const MainRouter = () => (
   <NavigationContainer>
@@ -22,7 +22,7 @@ const MainRouter = () => (
         gestureEnabled: true,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS, 
         headerStyle: {
-          backgroundColor: "#1B9BD7",
+          backgroundColor: Colors.main.PRIMARY,
         },
         headerTintColor: "white",
         headerBackTitle: "Back",
@@ -39,6 +39,4 @@ const MainRouter = () => (
   </NavigationContainer>
 );
    
-
-
 export default MainRouter; 

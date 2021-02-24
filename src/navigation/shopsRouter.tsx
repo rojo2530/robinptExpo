@@ -3,7 +3,7 @@ import { Tab } from './navigators';
 import ShopsScene from '../scenes/shops/ShopsScene';
 import { Text } from 'react-native';
 import { Colors } from '../utils/constants';
-import { TAB_BAR_ICON_SIZE } from '../utils/constants';
+import { TAB_BAR_ICON_SIZE, TABS_NAME, TABS_ROUTE_NAME } from '../utils/constants';
 import { Entypo } from '@expo/vector-icons'; 
 import { NavigationScreenProp } from 'react-navigation';
 
@@ -12,7 +12,6 @@ import { NavigationScreenProp } from 'react-navigation';
 interface Props {
   navigation: NavigationScreenProp<any,any>;
 }
-
 export default class ShopsRouter extends React.Component<Props> {
   render() {
     let tabColor = Colors.main.PRIMARY;
@@ -38,7 +37,7 @@ export default class ShopsRouter extends React.Component<Props> {
                     : Colors.grayscale.GRAY_MEDIUM,
                   
                 }}>
-                {route.name === 'ShopsList' ? 'All' : 'Favorites'}
+                {route.name === TABS_ROUTE_NAME.SHOPS ? TABS_NAME.SHOPS : TABS_NAME.FAVORITES}
               </Text>
             );
           },
@@ -51,12 +50,12 @@ export default class ShopsRouter extends React.Component<Props> {
             let icon;
 
             switch (route.name) {
-              case 'ShopsList':
+              case TABS_ROUTE_NAME.SHOPS:
                 tabColor = Colors.main.PRIMARY;
                 icon = <Entypo name="shop" color={iconColor} size={TAB_BAR_ICON_SIZE} />
                 break;
 
-              case 'ShopsFavoriteList':
+              case TABS_ROUTE_NAME.FAVORITES:
                 tabColor = Colors.main.PRIMARY;
                 icon = <Entypo name="star" color={iconColor} size={TAB_BAR_ICON_SIZE} />
                 break;
@@ -70,15 +69,13 @@ export default class ShopsRouter extends React.Component<Props> {
           inactiveTintColor: Colors.grayscale.GRAY_MEDIUM,
           activeTintColor: tabColor,
           showIcon: true,
-          // showLabel: true,
-          // scrollEnabled: true,
           indicatorStyle: {
             backgroundColor:tabColor
           },
         }}  
       >
-        <Tab.Screen name="ShopsList" component={ShopsScene}/>
-        <Tab.Screen name="ShopsFavoriteList" component={ShopsScene}/>
+        <Tab.Screen name={TABS_ROUTE_NAME.SHOPS} component={ShopsScene}/>
+        <Tab.Screen name={TABS_ROUTE_NAME.FAVORITES} component={ShopsScene}/>
       </Tab.Navigator>
     );
   }
