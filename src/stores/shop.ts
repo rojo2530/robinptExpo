@@ -17,7 +17,6 @@ class ShopsStore {
   constructor(rootStore: RootStore, apiService: ShopsServiceModel) {
     this.rootStore = rootStore;
     this.apiService = apiService;
-    console.log('Pagina inicial ', this.page);
   }
 
   //actions
@@ -38,24 +37,21 @@ class ShopsStore {
   }
 
   @action async fetchShops() {
-    console.log('Antes de pedirlo ', this.page);
     if (this.isLoading) {
-      console.log('Aun se estan cargando las tiendas');
       return;
     }
+    
     try {
       this.setIsLoading(true);
       const shops = await this.apiService.getShopsRequest(this.page + 1);
 
       if (shops) {
         this.shops = this.shops.concat(shops.slice());
-        //shops.map(shop => this.shops.push(shop));
-
         this.setIsCached(true);
         this.setPage(this.page + 1);
       }
+      
       this.setIsLoading(false);
-      return shops;
 
     } catch (error) {
       this.setIsLoading(false);

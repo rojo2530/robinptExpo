@@ -92,7 +92,6 @@ class ShopsScene extends React.Component<Props> {
       : toJS(shopsStore.shops.filter(shop => shop.favorite === true));
 
     console.log('Numero de tiendas ', shops.length);
-    console.log('Ruta ', this.props.route);
       
     return (
       <View style={{ flex: 1 }}>

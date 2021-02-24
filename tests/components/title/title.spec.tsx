@@ -1,7 +1,7 @@
-import * as React from "react"
-import * as Testrenderer from "react-test-renderer"
-import Title from "../../../src/components/title/title";
-import { Colors } from "../../../src/utils/constants";
+import * as React from 'react'
+import * as Testrenderer from 'react-test-renderer'
+import Title from '../../../src/components/title/title';
+import { Colors } from '../../../src/utils/constants';
 
 
 describe("<Title />", () => {

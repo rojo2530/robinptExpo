@@ -40,7 +40,7 @@ describe("ShopsStore", () => {
     shopsStore.apiService.getShopsRequest = jest.fn().mockImplementation((page: number) => 
       Promise.resolve(shops));
     
-    const result = await shopsStore.apiService.getShopsRequest(0); // first call
+    const result = await shopsStore.apiService.getShopsRequest(1);
     expect(result?.length).toBe(2);
     
     await shopsStore.fetchShops();
