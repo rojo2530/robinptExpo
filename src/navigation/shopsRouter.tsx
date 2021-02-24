@@ -1,4 +1,4 @@
-import  React from 'react';
+import * as React from 'react';
 import { Tab } from './navigators';
 import ShopsScene from '../scenes/shops/ShopsScene';
 import { Text } from 'react-native';
